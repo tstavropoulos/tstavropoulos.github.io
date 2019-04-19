@@ -37,9 +37,11 @@ Git submodules work in a quintessentially *git* way (I'm saying that as a good t
 
 ## [Real Life Examples](#real-life-examples)
 
-Below are some commandline examples showing working with Submodules.  They show how easy managing a submodule is (if you use git from commandline, which I highly recommend all programmers be comfortable with).  In the examples below, **PART** is a Unity project and git repository located in `~/PART/`, and **BGC_Tools** is a submodule from [our real, open-source repo of Unity tools](https://github.com/UCRBrainGameCenter/BGC_Tools).
+Below are some command-line examples showing working with Submodules.  They show how easy managing a submodule is (if you use git from command-line, which I highly recommend all programmers be comfortable with).  In the examples below, **PART** is a Unity project and git repository located in `~/PART/`, and **BGC_Tools** is a submodule from [our real, open-source repo of Unity tools](https://github.com/UCRBrainGameCenter/BGC_Tools).
 
 ### [Getting Started](#getting-started)
+
+Let's take a look at how you can add an existing repository (`BGC_Tools`) as a submodule to a different existing repository (`PART`).
 
 #### [Example 1.1: Adding a submodule to a repository](#example-11-adding-a-submodule-to-a-repository)
 
@@ -99,6 +101,8 @@ tstavrop:~/PART/Assets/Plugins$ git submodule add https://github.com/UCRBrainGam
 ```
 
 ### [Dealing with other people's changes](#dealing-with-other-peoples-changes)
+
+Let's now take a look at how git will behave when you `clone` a repository using a submodule, or `pull` in a commit that adds a new submodule.
 
 #### [Example 2: Pulling in the addition of a submodule](#example-2-pulling-in-the-addition-of-a-submodule)
 
@@ -187,7 +191,7 @@ Now we're completely up to date.  **Remember**, `submodule update` just updates 
 
 ### [Taking Stock](#taking-stock)
 
-Let's start by looking at a few specific scenarios and what git looks like.
+Let's take a look at how git reports the `status` of a project with a submodule with and without local changes.
 
 #### [Example 4: The project and the submodule are up to date](#example-4-the-project-and-the-submodule-are-up-to-date)
 
