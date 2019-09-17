@@ -46,7 +46,7 @@ Git's usage also makes collaborating with others relative easy.  You can integra
 
 ## [But... what should I use Git for?](#but-what-should-i-use-git-for)
 
-Great, Git helps me track, merge, share, and roll back changes.  But what should I actually use it for?  If I'm working by myself, isn't that just the same as a backup?
+I can hear a number of you through the computer saying "Great, Git helps me track, merge, share, and roll back changes.  But what should I actually use it for?  If I'm working by myself, isn't that just the same as a backup?"  I'll try to tackle the natural questions in a meaningful order.
 
 ### [What types of files should I use with Git?](#what-types-of-files-should-I-use-with-git)
 
