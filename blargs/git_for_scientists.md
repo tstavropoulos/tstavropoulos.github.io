@@ -25,7 +25,7 @@ _\<updated: 2019-09-18\>_
   * [Rebase](#rebase)
   * [Add](#add)
   * [Pull Request](#pull-request)
-  * [.gitignore](#.gitignore)
+  * [.gitignore](#gitignore)
 * [Using Git - An Example](#using-git---an-example)
 * [Resources](#resources)
 * [Afterword](#afterword)
@@ -123,7 +123,7 @@ A bit complicated to appropriately cover here, but essentially it is the process
 
 A GitHub-specific concept, this is a recommendation that specific changes be made to a repository. For example, if you identified a bug in a public repository you were using, you could [fork](#fork) the repository, create a [commit](#commit) that fixes the bug, and then open a pull request for the original repository with the commit and an explanation of the issue. If the owner accepts the pull request, then your changes would be [merged](#merge). This is how public code and documents can be improved without devolving into [narcissistic anarchy](https://en.wikipedia.org/wiki/Ayn_Rand).
 
-### [.gitignore](#.gitignore)
+### [.gitignore](#gitignore)
 
 A special file that you can add into a Git repostory, always with the name ".gitignore". Unsurpisingly this file tells Git what files to ignore. Git will act like any file or directory described in it doesn't exist, whether described literally (`Examples/DataFile.txt`) or with a wild card pattern (all csv files with `*.csv`). This is useful to avoid, for example, adding temporary autosave files like MatLab's "scriptName.m~" (with the pattern `*.m~`), or compiled output (sometimes `*/obj`).
 
