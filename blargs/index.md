@@ -10,6 +10,8 @@ An introduction to using git submodules *by example*, showcasing how they are us
 
 ## [Git (for Scientists)](git_for_scientists.md) (2019-09-17)
 
+_\<updated: 2019-09-18\>_
+
 An introduction to git, what it is and why to use it, directed primarily at scientists.
 
 ## About This Blog
