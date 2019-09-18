@@ -43,7 +43,7 @@ Since the beginning of Time (January 1st, 1970 00:00 GMT), programmers have had 
 
 Since this article isn't really about the history of VCS, or even about any VCS other than Git, I'm going to skip straight to what Git does and why we use it. In the broadest possible sense, Git is a sophisticated way of tracking changes to files. If you have ever used _**Track Changes**_ in a Word document, then you're familiar with the concept of receiving a batch of changes from a collaborator, and being able to inspect the document *before* and *after* the new changes are applied. If you haven't... well, it does exactly what I just described.
 
-Git takes this concept and runs with it, but for a whole directory of files instead of just a single one. Sets of changes are bundled together into a _**commit**_. A _**commit**_ might have changes like "Change *this* sentence to *that*" and "Create a new file called *this* with *that* text", etc. A _**commit**_ can be large or small, but ideally they are a somewhat cohesive sets of changes - think "Adding a new simulation type" instead of "All April and May 2019 changes".
+Git takes this concept and runs with it, but for a whole directory of files instead of just a single one. Sets of changes are bundled together into a _**commit**_. A _**commit**_ might have changes like "Change *this* sentence to *that*" and "Create a new file called *this* with *that* text", etc. A _**commit**_ can be large or small, but ideally it should be a somewhat cohesive sets of changes - think "Adding a new simulation type" instead of "All April and May 2019 changes".
 
 Tracking changes in this way unlocks another very important feature of Git, virtually for free - it's trivial to revisit old versions. It becomes easy to answer very common questions like "what changed since the last version?" and "Did this error exist 2 versions ago, or is it new?"
 
@@ -65,7 +65,7 @@ This is a common comparison, but it is not quite right - at least, it's not comp
 
 ### [Sounds Great. How do I Git-up my whole computer?](#sounds-great-how-do-i-git-up-my-whole-computer)
 
-Not so fast... The best way to use Git is to track individual projects, separately. A Git "project" is called a _**Repository**_ (sometimes *repo* for short). Indeed, you *could* put all of your work in one folder, make that folder a Git *repo*, and call it a day. But this would fail to capitalize on some of the strengths of Git. Instead, if you made a single Git repository for a single MatLab simulation you have, or a paper you're working on, then all of the changes in the history are relevant to that project, and it's significantly easier to Share, Examine old versions, and Fork (if you want to make some incompatible changes and take the project in a mutually-exclusive direction).
+Not so fast... The best way to use Git is to track individual projects, separately. A Git "project" is called a _**Repository**_ (sometimes *repo* for short). Indeed, you *could* put all of your work in one folder, make that folder a Git *repo*, and call it a day, but this would fail to capitalize on some of the strengths of Git. Instead, if you made a single Git repository for a single MatLab simulation you have, or a paper you're working on, then all of the changes in the history are relevant to that project, and it's significantly easier to Share, Examine old versions, and Fork (if you want to make some incompatible changes and take the project in a mutually-exclusive direction).
 
 ### [What is the difference between Git and GitHub?](#what-is-the-difference-between-git-and-github)
 
@@ -73,7 +73,7 @@ Git is the program (initially created by Linus Torvalds in 2005 when he was work
 
 ### [Fine. How do I get started?](#fine-how-do-i-get-started)
 
-If you're already comfortable using a command-line interface (that is, typing into a terminal or command prompt), then getting started is incredibly easy and there are many tutorials out there that will walk you though it. For everyone else, there are a lot of tools designed to make the process simpler. I tend to recommend [GitHub Desktop](https://desktop.github.com/) to new users, as it makes some of the common features relatively easy to use.
+If you're already comfortable using a command-line interface (that is, typing into a terminal or command prompt), then getting started is incredibly easy and there are many tutorials out there that will walk you though it. For everyone else, there are a lot of tools designed to make the process simpler. I tend to recommend [GitHub Desktop](https://desktop.github.com/) to new users, as it makes some of the common features relatively easy to use.  I'll also list some useful [learning resources](#resources) at the end of this post.
 
 ## [Git Terminology](#git-terminology)
 
@@ -85,19 +85,19 @@ A single Git project. It tracks the history of all [commits](#commit), and is co
 
 ### [Commit](#commit)
 
-A single bundle of changes within a [Repository](#repository). A commit contains all of the changes, the author who created the commit, the date it was created, and usually a Title and Description of what the commit contains. The History of a repository is all of the Commits that brought it from just an empty directory to the state it's in now. Making changes to files within a repository doesn't automatically create a Commit - you do that deliberately when you're ready by `Add`ing and `Commit`ing the files you wish to be included, and providing the description.
+A single bundle of changes within a [repository](#repository). A commit contains all of the changes, the author who created the commit, the date it was created, and usually a Title and Description of what the commit contains. The History of a repository is all of the Commits that brought it from just an empty directory to the state it's in now. Making changes to files within a repository doesn't automatically create a Commit - you do that deliberately when you're ready by [adding](#add) and commiting the files you wish to be included, and providing the description.
 
 ### [Branch](#branch)
 
-A branch in Git is like a branch in the road of a [Repository](#repository)'s history (indeed, the term wasn't chosen arbitrarily). The main, primary branch in a repository is usually called the `master` branch. Its history is just a linear sequence of changes to create the current version. However, if you went back to an old version of the repository and make different changes, you could save that as a new `branch`, and freely switch between them. Frequently in shared programming projects, the `master` branch is where the current stable code lives that outsiders should use, and new features that aren't yet complete are be developed in other branches, and then [merged](#merge) into the `master` branch when they're ready.
+A branch in Git is like a branch in the road of a [repository](#repository)'s history (indeed, the term wasn't chosen arbitrarily). The main, primary branch in a repository is usually called the `master` branch. Its history is just a linear sequence of changes to create the current version. However, if you went back to an old version of the repository and make different changes, you could preserve that as a new `branch`, and freely switch between them. Frequently in shared programming projects, the `master` branch is where the current stable code lives that outsiders should use, and new features that aren't yet complete are developed in other branches, and then [merged](#merge) into the `master` branch when they're ready.
 
 ### [Merge](#merge)
 
-Merging is where the changes in two different [branches](#branch) are reconciled and one branch is updated to include them all. If I committed some changes that tweaked some of the math of a simulation, and you created a commit with some changes to make it faster and more efficient, then the process of me updating my repository with your changes would be merging.
+Merging is where the changes in two different [branches](#branch) are reconciled and one branch is updated to include them all. If I committed some changes that tweaked some of the math of a simulation, and you created a commit with some changes to make it faster and more efficient, then the process of me updating my repository with your changes would involve merging.
 
 ### [Clone](#clone)
 
-The process of downloading a repository, usually (but not always) running on a server (like GitHub). A cloned repository is generally "meant to" stay up-to-date with its source.
+The process of downloading a repository, usually running on a server (like GitHub). A cloned repository is generally "meant to" stay up-to-date with its source.
 
 ### [Fork](#fork)
 
@@ -105,15 +105,15 @@ The process of spinning-off a new repository that's a copy of some point in the 
 
 ### [Push](#push)
 
-The process of uploading your new commits to another copy of the repository, usually (but not always) running on a server (like GitHub).
+The process of uploading your new commits to another copy of the repository, usually running on a server (like GitHub).
 
 ### [Pull](#pull)
 
-The process of downloading new commits from another copy of the repository, usually (but not always) running on a server (like GitHub).
+The process of downloading new commits from another copy of the repository, usually running on a server (like GitHub).
 
 ### [Add](#add)
 
-Not every change that exists in a repository must be included in the next commit. Before creating a commit, each of the modified files that you'd like the commit to actually change are added to a list of the pending changes. If you changed 2 files and deleted a third, you could choose to "add" the changes, but not the deletion, to the next commit. This would work whether you just wanted to include the deletion as part of a separate commit, or even if you didn't wish to include it at all.
+Not every change that exists in a repository must be included in the next commit you create. Before creating a commit, each of the modified files that you'd like the commit to actually include are added to a list of the pending changes. If you changed 2 files and deleted a third, you could choose to "add" the changes, but not the deletion, to the next commit. This would work whether you just wanted to include the deletion as part of a separate commit, or even if you didn't wish to include it at all.
 
 ### [Rebase](#rebase)
 
@@ -129,9 +129,9 @@ A special file that you can add into a Git repostory, always with the name ".git
 
 ## [Using Git - An Example](#using-git---an-example)
 
-This section is to explain how the process of using Git might look, but is not by any means a proper tutorial on its usage. For convenience and reference, proper git commands will be highlighted.
+This section is to explain how the process of using Git might look, but is not by any means a proper tutorial on its usage. For convenience and reference, proper Git commands will be highlighted.
 
-To start with, an existing project directory is `init`ialized with Git, optionally a relevant `.gitignore` file is created, all the "modified" files (literally everything in this case) are `add`ed, and then the changes are `commit`ed.
+To start with, an existing project directory is `init`ialized with Git, optionally a relevant `.gitignore` file is created, all the "modified" files (literally everything, in this case) are `add`ed, and then the changes are `commit`ed.
 
 More changes are made to the project files. When complete, they are `add`ed to form the list of pending changes and those changes are `commit`ed.
 
@@ -141,14 +141,14 @@ On this secondary machine, the GitHub repository is `clone`d. Then some of the f
 
 Now, the original project can `pull` the new commits from GitHub, adding the new commit to the original computer.
 
-If the changes were bad, the `log` could be inspected, a desired commit selected, and then one could `checkout` said commit, resetting the repository to an earlier state. One could even just `revert` the bad changes, which would automatically create new commits that undo the actions of the undesired commits (not merely purge them from the history).
+If the changes were bad, the `log` could be inspected, a desired commit selected, and then one could `checkout` said commit, resetting the repository to this earlier state. One could even just `revert` the bad commits, which would automatically create new commits that undo the actions of the undesired commits (not merely purge them from the history).
 
 ## [Resources](#resources)
 
 When it's time to take the plunge and learn how to use Git, here are some learning resources I can recommend:
 
 * [GitHub Learning Lab](https://lab.github.com/) - The first few tutorials here are a good way to get started
-* [Katacoda Git Tutorials](https://www.katacoda.com/courses/git) - Interactive git tutorial in the browser, but expects some knowledge about basic shell commands. (Since this actually reveals how you solve each step with the push of a button, you could work around having no command line experience)
+* [Katacoda Git Tutorials](https://www.katacoda.com/courses/git) - Interactive Git tutorial in the browser, but expects some knowledge about basic shell commands. (Since this actually reveals how you solve each step with the push of a button, you could work around having no command line experience)
 * [Resources to learn Git](https://try.github.io/) - The resources on this page are all pretty useful, Learn Git Branching being no exception.
 * [A quick Git CLI primer](https://medium.com/@george.seif94/a-full-tutorial-on-how-to-use-github-88466bac7d42) - A brief primer on using GitHub on the Command-Line Interface.
 
